@@ -29,6 +29,10 @@ public class Inputter {
 		}
 	}
 
+	public static int getInt(String prompt) {
+		return getInt(prompt, (int _un) -> {});
+	}
+
 	public static String getString(String prompt, StringSetter setter) {
 		while (true) {
 			System.out.print(prompt);

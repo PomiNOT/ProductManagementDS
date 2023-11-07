@@ -16,6 +16,9 @@ public enum Mode {
     FIND_CUSTOMER_BY_ID("Find customer by id"),
     DELETE_CUSTOMER_BY_ID("Delete customer by id"),
     ALL_CUSTOMERS("View all customers"),
+    ALL_ORDERS("View all orders"),
+    SORT_ORDERS("Sort orders by pcode then code"),
+    BUY_STUFF("Buy a product"),
     EXIT("Exit");
 
     private  final  String label;

@@ -1,9 +1,11 @@
 
 import bo.CustomerManager;
+import bo.OrderManager;
 import bo.ProductManager;
 import datastructures.LListSet;
 import datastructures.StorageBackend;
 import entities.Customer;
+import entities.Order;
 import entities.Product;
 import io.CustomerFile;
 import io.ProductFile;
@@ -20,11 +22,13 @@ public class Main {
 		// StorageBackend<Product> store = new LListSet<>();
 		StorageBackend<Product> storeProduct = new LListSet<>();
 		StorageBackend<Customer> storeCustomer = new LListSet<>();
+		LListSet<Order> storeOrder = new LListSet<>();
 
 		ProductManager manager = new ProductManager(storeProduct);
 		CustomerManager cManager = new CustomerManager(storeCustomer);
+		OrderManager oManager = new OrderManager(cManager, manager, storeOrder);
 
-		Display display = new Display(manager, cManager);
+		Display display = new Display(manager, cManager,  oManager);
 
 		ProductFile file = new ProductFile("products.txt");
 		CustomerFile cFile = new CustomerFile("customers.txt");
@@ -113,6 +117,15 @@ public class Main {
 					break;
 				case ALL_CUSTOMERS:
 					display.displayAllCustomers();
+					break;
+				case ALL_ORDERS:
+					display.displayOrders();
+					break;
+				case SORT_ORDERS:
+					storeOrder.sort();
+					break;
+				case BUY_STUFF:
+					display.displayBuying();
 					break;
 				case EXIT:
 					System.out.println("Good bye");
